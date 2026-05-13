@@ -1,1 +1,6 @@
 .venv/
+.Rhistory
+.Rproj.user
+data/*.csv
+results/figures/*.pdf
+results/modules/*.csv
