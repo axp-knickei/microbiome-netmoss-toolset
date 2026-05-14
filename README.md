@@ -21,11 +21,18 @@ To set up your environment:
 For a detailed troubleshooting log or advanced setup instructions, see [docs/INSTALLATION.md](docs/INSTALLATION.md).
 
 **2. Execute the Pipeline (CLI)**
-Run the scripts sequentially from your terminal in the project root:
+Run the scripts sequentially from your terminal in the project root. You can now customize parameters via flags:
 ```bash
-Rscript scripts/01_generate_mock_data.R
-Rscript scripts/02_netmoss_analysis.R        # Fast Demo (Mocked)
-Rscript scripts/02b_netmoss_real_analysis.R   # Real NetMoss Analysis
+# 1. Generate Data (Custom features and seed)
+Rscript scripts/01_generate_mock_data.R --n_features 150 --seed 123 --out_dir data
+
+# 2. Fast Demo Analysis (Specify input/output and groups)
+Rscript scripts/02_netmoss_analysis.R --input_dir data --output_dir results/modules --groups "Control,Control,Disease"
+
+# 2b. Real NetMoss Analysis
+Rscript scripts/02b_netmoss_real_analysis.R
+
+# 3. Visualization
 Rscript scripts/03_visualization_publication.R
 ```
 

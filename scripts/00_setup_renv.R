@@ -21,7 +21,7 @@ message("Installing BiocManager and remotes...")
 install.packages(c("BiocManager", "remotes"))
 
 # 4. Install CRAN Packages
-cran_packages <- c("here", "pheatmap", "circlize", "ggplot2", "igraph", "randomForest")
+cran_packages <- c("here", "pheatmap", "circlize", "ggplot2", "igraph", "randomForest", "optparse")
 message("Installing CRAN packages...")
 renv::install(cran_packages)
 
