@@ -20,8 +20,18 @@ To set up your environment:
 
 For a detailed troubleshooting log or advanced setup instructions, see [docs/INSTALLATION.md](docs/INSTALLATION.md).
 
-**2. Execute the Pipeline (CLI)**
-Run the scripts sequentially from your terminal in the project root. You can now customize parameters via flags:
+**2. Execute the Pipeline (Automation)**
+For convenience, a `Makefile` is provided to run the entire pipeline or specific steps with single commands:
+```bash
+make all        # Run full pipeline (Data -> Analysis -> Visualize)
+make data       # Step 1: Generate Mock Data
+make analysis   # Step 2: Run NetMoss Analysis
+make visualize  # Step 3: Generate Figures
+make clean      # Reset the project (deletes generated files)
+```
+
+**3. Custom Execution (CLI)**
+Alternatively, you can run scripts manually and customize parameters via flags:
 ```bash
 # 1. Generate Data (Custom features and seed)
 Rscript scripts/01_generate_mock_data.R --n_features 150 --seed 123 --out_dir data
@@ -38,9 +48,14 @@ Rscript scripts/03_visualization_publication.R --input_dir data --assignment_fil
 
 ## ✅ Verification
 
-To ensure your installation is correct and all dependencies are working, run the provided demonstration pipeline. This generates mock data, performs a test integration, and produces diagnostic plots.
+To ensure your installation is correct and all dependencies are working, run the provided demonstration pipeline. 
 
-Run from your terminal:
+Run the entire pipeline automatically:
+```bash
+make all
+```
+
+Or run manually:
 ```bash
 Rscript scripts/01_generate_mock_data.R
 Rscript scripts/02b_netmoss_real_analysis.R
