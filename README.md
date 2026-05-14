@@ -7,13 +7,18 @@ This repository contains an automated R pipeline to identify context-specific ("
 ## 🚀 Quickstart
 
 **1. Install Dependencies**
-This project requires `NetMoss2` and several Bioconductor packages. For a robust installation process that avoids common timeout and dependency issues, please follow our [Detailed Installation Guide](docs/INSTALLATION.md).
+This project uses `renv` to manage R dependencies. This ensures that everyone uses the exact same versions of the 100+ required packages.
 
-Quick setup (requires `remotes`):
-```R
-# See docs/INSTALLATION.md for full dependency list
-remotes::install_github("xiaolw95/NetMoss2")
-```
+To set up your environment:
+1. Open this project in RStudio (or your R terminal).
+2. Install `renv` if you don't have it: `install.packages("renv")`
+3. Restore the environment:
+   ```R
+   renv::restore()
+   ```
+   *This will automatically download and install all necessary CRAN, Bioconductor, and GitHub packages.*
+
+For a detailed troubleshooting log or advanced setup instructions, see [docs/INSTALLATION.md](docs/INSTALLATION.md).
 
 **2. Execute the Pipeline (CLI)**
 Run the scripts sequentially from your terminal in the project root:
