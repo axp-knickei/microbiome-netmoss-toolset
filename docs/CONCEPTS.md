@@ -36,18 +36,25 @@ This repository implements a modular pipeline designed to demonstrate the NetMos
 
 **Implementation:** This script simulates microbial abundance matrices across three distinct cohorts. It explicitly embeds fixed co-occurrence structures (the "Moss") and introduces controlled differential edges (the "Net") between cohorts to simulate disease-associated rewiring while maintaining the compositional properties typical of metagenomic data.
 
-### **3.2 02\_netmoss\_analysis.R**
+### 3.2 02_netmoss_analysis.R (Demonstration)
 
-**Rationale:** The core computational objective is to align disparate networks and extract statistically significant modules.
+**Rationale:** To provide a fast-running demonstration of the downstream visualization workflow.
+
+**Implementation:** This script generates "mocked" module assignments. It skips the heavy computation of NetMoss2 and directly produces a compatible CSV file to show how results are structured and visualized.
+
+### 3.2b 02b_netmoss_real_analysis.R (Real Analysis)
+
+**Rationale:** The core computational objective is to align disparate networks and extract statistically significant modules using the actual NetMoss2 package.
 
 **Implementation:** Utilizing the NetMoss2 R package, the script performs:
 
 1. **Network Construction:** Inferring edges using robust correlation measures (e.g., SparCC or SpiecEasi).  
 2. **Cross-Cohort Integration:** Harmonizing network topologies across datasets.  
 3. **Module Identification:** Categorizing nodes based on their contribution to conserved versus differential modules.  
-   **Output:** A feature-to-module assignment matrix (netmoss\_assignments.csv).
+   **Output:** A real feature-to-module assignment matrix (real_netmoss_assignments.csv).
 
-### **3.3 03\_visualization\_publication.R**
+### 3.3 03_visualization_publication.R
+
 
 **Rationale:** High-dimensional network data must be synthesized into interpretable figures for scientific communication.
 

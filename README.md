@@ -19,7 +19,8 @@ remotes::install_github("xiaolw95/NetMoss2")
 Run the scripts sequentially from your terminal in the project root:
 ```bash
 Rscript scripts/01_generate_mock_data.R
-Rscript scripts/02_netmoss_analysis.R
+Rscript scripts/02_netmoss_analysis.R        # Fast Demo (Mocked)
+Rscript scripts/02b_netmoss_real_analysis.R   # Real NetMoss Analysis
 Rscript scripts/03_visualization_publication.R
 ```
 
@@ -30,13 +31,13 @@ To ensure your installation is correct and all dependencies are working, run the
 Run from your terminal:
 ```bash
 Rscript scripts/01_generate_mock_data.R
-Rscript scripts/02_netmoss_analysis.R
+Rscript scripts/02b_netmoss_real_analysis.R
 Rscript scripts/03_visualization_publication.R
 ```
 
 **Expected Outputs:**
 - **`data/*.csv`**: Three mock network files.
-- **`results/modules/netmoss_assignments.csv`**: Feature mapping.
+- **`results/modules/real_netmoss_assignments.csv`**: Real feature mapping from NetMoss2.
 - **`results/figures/circlize_moss_cohort1.pdf`**: Circular connectivity plot.
 - **`results/figures/heatmap_net_shift.pdf`**: Heatmap showing module rewiring.
 
@@ -44,6 +45,6 @@ If these files are generated without errors, your `NetMoss2` environment is full
 
 ## 📊 How to Interpret Results
 
-*   **`netmoss_assignments.csv`:** Contains the mapping of each microbial feature to a distinct module. Features designated as `Moss_*` form the functional core consistent across all your cohorts, while `Net_*` represents cohort-specific network structures (e.g., disease-state rewiring).
+*   **`real_netmoss_assignments.csv`:** Contains the mapping of each microbial feature to a distinct module using the actual NetMoss2 algorithm. Features designated as `Moss_*` form the functional core consistent across all your cohorts, while `Net_*` represents cohort-specific network structures (e.g., disease-state rewiring).
 *   **`circlize_moss_cohort1.pdf`:** A circular representation showing edge connectivity. High-density ribbon connections validate the topological strength of the Moss modules.
 *   **`heatmap_net_shift.pdf`:** Visualizes the "on/off" switch effect of Net modules. Red indicates strong correlation (edges present) in one condition, contrasting with blue (edges absent) in another, confirming significant module rewiring due to biological conditions or batch effects.
