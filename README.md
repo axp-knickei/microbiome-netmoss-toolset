@@ -2,12 +2,17 @@
 
 This repository contains an automated R pipeline to identify context-specific ("Net") and conserved ("Moss") microbial subnetworks across multiple cohorts.
 
+**New to NetMoss?** Check out our [Beginner's Guide to NetMoss Concepts](docs/CONCEPTS.md) to understand the "What", "Why", and "How" of this project.
+
 ## 🚀 Quickstart
 
 **1. Install Dependencies**
-Execute this one-liner in your R console:
+This project requires `NetMoss2` and several Bioconductor packages. For a robust installation process that avoids common timeout and dependency issues, please follow our [Detailed Installation Guide](docs/INSTALLATION.md).
+
+Quick setup (requires `remotes`):
 ```R
-install.packages(c("here", "circlize", "pheatmap")); if(!requireNamespace("BiocManager", quietly = TRUE)) install.packages("BiocManager")
+# See docs/INSTALLATION.md for full dependency list
+remotes::install_github("xiaolw95/NetMoss2")
 ```
 
 **2. Execute the Pipeline (CLI)**
@@ -17,6 +22,25 @@ Rscript scripts/01_generate_mock_data.R
 Rscript scripts/02_netmoss_analysis.R
 Rscript scripts/03_visualization_publication.R
 ```
+
+## ✅ Verification
+
+To ensure your installation is correct and all dependencies are working, run the provided demonstration pipeline. This generates mock data, performs a test integration, and produces diagnostic plots.
+
+Run from your terminal:
+```bash
+Rscript scripts/01_generate_mock_data.R
+Rscript scripts/02_netmoss_analysis.R
+Rscript scripts/03_visualization_publication.R
+```
+
+**Expected Outputs:**
+- **`data/*.csv`**: Three mock network files.
+- **`results/modules/netmoss_assignments.csv`**: Feature mapping.
+- **`results/figures/circlize_moss_cohort1.pdf`**: Circular connectivity plot.
+- **`results/figures/heatmap_net_shift.pdf`**: Heatmap showing module rewiring.
+
+If these files are generated without errors, your `NetMoss2` environment is fully configured.
 
 ## 📊 How to Interpret Results
 

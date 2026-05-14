@@ -8,14 +8,14 @@ suppressPackageStartupMessages({
 })
 
 # Load assignments and data
-modules <- read.csv(here("results", "modules", "netmoss_assignments.csv"))
-net1 <- as.matrix(read.csv(here("data", "Cohort1_network.csv"), row.names = 1))
-net3 <- as.matrix(read.csv(here("data", "Cohort3_network.csv"), row.names = 1))
+modules <- read.csv(here::here("results", "modules", "netmoss_assignments.csv"))
+net1 <- as.matrix(read.csv(here::here("data", "Cohort1_network.csv"), row.names = 1))
+net3 <- as.matrix(read.csv(here::here("data", "Cohort3_network.csv"), row.names = 1))
 
-dir.create(here("results", "figures"), showWarnings = FALSE, recursive = TRUE)
+dir.create(here::here("results", "figures"), showWarnings = FALSE, recursive = TRUE)
 
 # 1. Circular Layout: Focus on Moss module interactions in Cohort 1
-pdf(here("results", "figures", "circlize_moss_cohort1.pdf"), width = 8, height = 8)
+pdf(here::here("results", "figures", "circlize_moss_cohort1.pdf"), width = 8, height = 8)
 moss_features <- modules$Feature[modules$Assigned_Module == "Moss_Mod_1"][1:20]
 subset_net <- net1[moss_features, moss_features]
 subset_net[subset_net < 0.7] <- 0 # Thresholding for visual clarity
@@ -32,7 +32,7 @@ edge_weights <- cbind(
   Cohort3 = as.vector(net3[net_features, net_features])
 )
 
-pdf(here("results", "figures", "heatmap_net_shift.pdf"), width = 5, height = 7)
+pdf(here::here("results", "figures", "heatmap_net_shift.pdf"), width = 5, height = 7)
 pheatmap(edge_weights, 
          cluster_cols = FALSE, 
          show_rownames = FALSE,

@@ -28,13 +28,13 @@ generate_adj <- function(cohort_name, net_state) {
   
   colnames(adj) <- rownames(adj) <- paste0("Feature_", 1:n_features)
   
-  out_path <- here("data", paste0(cohort_name, "_network.csv"))
+  out_path <- here::here("data", paste0(cohort_name, "_network.csv"))
   write.csv(adj, out_path)
   message("Generated: ", out_path)
 }
 
 # Create output directories
-dir.create(here("data"), showWarnings = FALSE, recursive = TRUE)
+dir.create(here::here("data"), showWarnings = FALSE, recursive = TRUE)
 
 # Generate cohorts
 generate_adj("Cohort1", "State_A")

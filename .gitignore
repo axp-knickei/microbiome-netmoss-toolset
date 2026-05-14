@@ -4,3 +4,57 @@
 data/*.csv
 results/figures/*.pdf
 results/modules/*.csv
+docs/conversation_history.md
+
+# --- R Core ---
+.Rhistory
+.RData
+.Ruserdata
+.Rapp.history
+*-Ex.R
+
+# --- RStudio ---
+.Rproj.user/
+*.Rproj
+
+# --- Package Management (renv) ---
+# If using renv, ignore the library but keep the lockfile and settings
+renv/library/
+renv/python/
+renv/staging/
+
+# --- Large Bioinformatics Data (Common Extensions) ---
+# Raw sequencing and heavy processed files
+*.fastq
+*.fastq.gz
+*.fq
+*.fq.gz
+*.bam
+*.sam
+*.vcf
+*.fasta
+*.fa
+*.fna
+*.daa
+*.m8
+*.bigWig
+*.bed
+
+# --- NetMoss / Analysis Specifics ---
+# Ignore the actual data and results content, but keep the folders (see tip below)
+data/*
+results/*
+!data/.gitkeep
+!results/.gitkeep
+
+# --- Logs and Temporary Files ---
+*.log
+*.tmp
+*.bak
+.DS_Store
+Thumbs.db
+
+# --- HPC/Cluster Job Outputs ---
+*.sh.e*
+*.sh.o*
+slurm-*.out
