@@ -30,10 +30,10 @@ Rscript scripts/01_generate_mock_data.R --n_features 150 --seed 123 --out_dir da
 Rscript scripts/02_netmoss_analysis.R --input_dir data --output_dir results/modules --groups "Control,Control,Disease"
 
 # 2b. Real NetMoss Analysis
-Rscript scripts/02b_netmoss_real_analysis.R
+Rscript scripts/02b_netmoss_real_analysis.R --input_dir data --output_dir results/modules
 
 # 3. Visualization
-Rscript scripts/03_visualization_publication.R
+Rscript scripts/03_visualization_publication.R --input_dir data --assignment_file results/modules/real_netmoss_assignments.csv --output_dir results/figures
 ```
 
 ## ✅ Verification
