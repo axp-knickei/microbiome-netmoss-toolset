@@ -26,6 +26,19 @@ input_dir <- opt$input_dir
 assignment_file <- opt$assignment_file
 output_dir <- opt$output_dir
 
+# --- Error Handling: Verify Input Files ---
+required_inputs <- c(
+  here::here(assignment_file),
+  here::here(input_dir, "Cohort1_network.csv")
+)
+
+for (f in required_inputs) {
+  if (!file.exists(f)) {
+    stop(paste0("\n[Error]: Required file missing: ", f, 
+                "\n -> Please run the analysis scripts first or run 'make all'."))
+  }
+}
+
 # Load assignments and data
 message("Loading assignments from: ", here::here(assignment_file))
 modules <- read.csv(here::here(assignment_file))

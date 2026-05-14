@@ -25,6 +25,13 @@ input_dir <- opt$input_dir
 output_dir <- opt$output_dir
 group_vector <- unlist(strsplit(opt$groups, ","))
 
+# --- Error Handling: Verify Input Files ---
+required_inputs <- here::here(input_dir, "Cohort1_network.csv")
+if (!file.exists(required_inputs)) {
+  stop(paste0("\n[Error]: Input data missing at ", required_inputs, 
+              "\n -> Please run 01_generate_mock_data.R first or run 'make data'."))
+}
+
 message("Input directory: ", input_dir)
 message("Output directory: ", output_dir)
 message("Groups: ", paste(group_vector, collapse = ", "))
