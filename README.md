@@ -147,6 +147,32 @@ If these files are generated without errors, your `NetMoss2` environment is full
 *   **`circlize_moss_cohort1.pdf`:** A circular representation showing edge connectivity. High-density ribbon connections validate the topological strength of the Moss modules.
 *   **`heatmap_net_shift.pdf`:** Visualizes the "on/off" switch effect of Net modules. Red indicates strong correlation (edges present) in one condition, contrasting with blue (edges absent) in another, confirming significant module rewiring due to biological conditions or batch effects.
 
+## ❓ Troubleshooting / FAQ
+
+### 1. Why do I get an `unused argument` error when using `here()`?
+This usually happens because the `plyr` package (a dependency of NetMoss2) masks the `here` package. 
+- **Fix:** Always use explicit namespacing: `here::here("your", "path")`. All scripts in this repo already use this fix.
+
+### 2. Package installation is timing out.
+Bioinformatics packages can be very large.
+- **Fix:** Increase the R timeout limit before running `renv::restore()`:
+  ```R
+  options(timeout = 600) # Increase to 10 minutes
+  ```
+
+### 3. I'm missing Bioconductor packages (e.g., `ComplexHeatmap`, `phyloseq`).
+These are not on CRAN and must be installed via `BiocManager`.
+- **Fix:**
+  ```R
+  if (!require("BiocManager", quietly = TRUE)) install.packages("BiocManager")
+  BiocManager::install(c("ComplexHeatmap", "phyloseq", "preprocessCore"))
+  ```
+
+### 4. Compilation errors on Windows.
+- **Fix:** Ensure you have **Rtools** installed. It provides the C++ compilers needed for packages like `SpiecEasi`.
+
+For a more detailed log of solved issues, see **[docs/INSTALLATION.md](docs/INSTALLATION.md)**.
+
 ## 📚 Citation & References
 
 This toolset integrates and builds upon the **NetMoss** algorithm. If you use this pipeline in your research, please cite the original NetMoss paper:
