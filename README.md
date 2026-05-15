@@ -56,6 +56,8 @@ Rscript scripts/06b_real_temporal_workflow_wrapper.R \
   --t1 "Day_0" --t2 "Day_14" --t3 "Month_3"
 ```
 
+For a step-by-step manual on customizing this for your research, see the **[Real Longitudinal Data Guide](docs/LONGITUDINAL_REAL_DATA_GUIDE.md)**.
+
 ### Visualizing Dynamics:
 The final output (`transition_T2_T5_T8.pdf`) categorizes taxa into:
 - **Shared Drivers:** Consistently important across all transitions.
