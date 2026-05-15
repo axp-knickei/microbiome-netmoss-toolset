@@ -60,6 +60,21 @@ The final output (`transition_T2_T5_T8.pdf`) categorizes taxa into:
 - **Early Drivers:** Important initially, then lose influence.
 - **Late Drivers:** Gain importance in later timepoints.
 
+## 🛠 System Requirements
+
+Before setting up the project, ensure your system meets the following prerequisites:
+
+### Software:
+- **R (>= 4.0.0):** The core analysis is written in R.
+- **Python (3.x):** Required for the longitudinal mock data generator.
+
+### System Libraries (Linux):
+Many R packages (like `httr`, `xml2`, and `curl`) require development headers to be installed on your operating system. For **Ubuntu/Debian**, run:
+```bash
+sudo apt-get install -y libcurl4-openssl-dev libxml2-dev libssl-dev libfontconfig1-dev libharfbuzz-dev libfribidi-dev libfreetype6-dev libpng-dev libtiff5-dev libjpeg-dev
+```
+*Note: If you are on macOS, you may need to install these via `brew` (e.g., `brew install openssl libxml2 curl`).*
+
 ## 🚀 Quickstart
 
 **1. Install Dependencies**
