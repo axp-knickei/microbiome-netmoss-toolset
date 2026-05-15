@@ -7,7 +7,7 @@ random.seed(42)
 
 n_subjects = 10
 n_timepoints = 10
-n_features = 500  # Increased for gut microbiome realism
+n_features = 2000  # Scaled to reflect higher gut microbiome diversity
 
 # Define Categories for Features
 # 10% Shared, 15% Early, 15% Late, 60% Stable/Noise
@@ -16,7 +16,7 @@ early_count = int(n_features * 0.15)
 late_count = int(n_features * 0.15)
 stable_count = n_features - (shared_count + early_count + late_count)
 
-feature_list = [f"Taxon_{i:03d}" for i in range(1, n_features + 1)]
+feature_list = [f"Taxon_{i:04d}" for i in range(1, n_features + 1)]
 random.shuffle(feature_list)
 
 categories = {}
