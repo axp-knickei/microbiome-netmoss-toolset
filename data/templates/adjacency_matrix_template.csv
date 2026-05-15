@@ -1,0 +1,6 @@
+,Taxon_A,Taxon_B,Taxon_C,Taxon_D,Taxon_E
+Taxon_A,1.0,0.2,0.8,0.1,0.4
+Taxon_B,0.2,1.0,0.3,0.7,0.2
+Taxon_C,0.8,0.3,1.0,0.4,0.6
+Taxon_D,0.1,0.7,0.4,1.0,0.3
+Taxon_E,0.4,0.2,0.6,0.3,1.0

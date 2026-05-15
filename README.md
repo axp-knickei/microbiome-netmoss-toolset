@@ -4,6 +4,24 @@ This repository contains an automated R pipeline to identify context-specific ("
 
 **New to NetMoss?** Check out our [Beginner's Guide to NetMoss Concepts](docs/CONCEPTS.md) to understand the "What", "Why", and "How" of this project.
 
+## 📊 Data Requirements
+
+Before running the analysis on your own data, please review the **[NetMoss Data Input Guide](docs/DATA_INPUT_GUIDE.md)**. 
+
+### Key Information for Users:
+- **Input Type:** This toolset expects **Adjacency Matrices** (square matrices representing microbial networks) as the primary input.
+- **Upstream Pipeline:** This analysis typically occurs after taxonomic profiling (e.g., Bracken, MetaPhlAn) and network inference (e.g., SparCC, SPIEC-EASI).
+- **Templates:** See `data/templates/` for example CSV structures for both abundance tables and adjacency matrices.
+
+### Utility: Converting Abundance to Network
+If you only have an abundance table (Taxa by Samples), use our utility script to generate the required adjacency matrices:
+```bash
+Rscript scripts/01b_abundance_to_network.R \
+  --input path/to/your/abundance.csv \
+  --output data/Cohort1_network.csv \
+  --method spearman
+```
+
 ## 🚀 Quickstart
 
 **1. Install Dependencies**
