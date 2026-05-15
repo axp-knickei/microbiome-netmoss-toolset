@@ -47,11 +47,13 @@ If you have longitudinal data (multiple timepoints per subject), you can identif
 ### Automated Temporal Workflow:
 Run the wrapper to go from raw longitudinal data to transition plots:
 ```bash
-# 1. Generate longitudinal mock data
-python3 scripts/05_generate_longitudinal_mock.py
-
-# 2. Run the temporal wrapper (Infers networks -> Calculates NMSS -> Plots)
+# Option A: Fast Demo (using mock data and simulated scores)
 Rscript scripts/06_temporal_workflow_wrapper.R
+
+# Option B: Real Data Template (supports dynamic timepoints & feature alignment)
+Rscript scripts/06b_real_temporal_workflow_wrapper.R \
+  --input path/to/real_data.csv \
+  --t1 "Day_0" --t2 "Day_14" --t3 "Month_3"
 ```
 
 ### Visualizing Dynamics:
