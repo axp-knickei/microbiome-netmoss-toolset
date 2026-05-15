@@ -6,6 +6,22 @@ This repository contains an automated R pipeline to identify context-specific ("
 
 **Confused by the scripts?** Read our simple, non-technical guide: [How the Pipeline Works (A Simple Guide)](docs/WORKFLOW_EXPLAINED.md).
 
+## 📂 Directory Structure
+
+```text
+📂 microbiome-netmoss-toolset
+├── 📁 data             # Input networks, mock data, and CSV templates
+│   └── 📁 templates    # Example CSV structures for abundance/adjacency
+├── 📁 docs             # Conceptual guides and technical documentation
+├── 📁 results          # All outputs from the analysis
+│   ├── 📁 figures      # Visual plots (PDF/PNG)
+│   └── 📁 modules      # Text-based results and assignments
+├── 📁 scripts          # Core R/Python scripts (numbered 00-06)
+├── 📄 Makefile         # One-click automation file
+├── 📄 CHANGELOG.md     # History of project updates
+└── 📄 README.md        # Project overview and quickstart
+```
+
 ## 📊 Data Requirements
 
 Before running the analysis on your own data, please review the **[NetMoss Data Input Guide](docs/DATA_INPUT_GUIDE.md)**. 
