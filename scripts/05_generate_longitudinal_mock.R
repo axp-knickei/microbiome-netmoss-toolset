@@ -8,48 +8,54 @@ library(tidyr)
 
 n_subjects <- 10
 n_timepoints <- 10
-features <- c("Feature_A", "Feature_B", "Feature_C")
+n_features <- 2000  # Scaled to reflect higher gut microbiome diversity
 
-# Create a grid of all combinations
+# Define Categories
+shared_count <- floor(n_features * 0.10)
+early_count  <- floor(n_features * 0.15)
+late_count   <- floor(n_features * 0.15)
+stable_count <- n_features - (shared_count + early_count + late_count)
+
+# Create Feature list and assign categories
+feature_list <- sprintf("Taxon_%04d", 1:n_features)
+shuffled_features <- sample(feature_list)
+
+shared_feats <- shuffled_features[1:shared_count]
+early_feats  <- shuffled_features[(shared_count + 1):(shared_count + early_count)]
+late_feats   <- shuffled_features[(shared_count + early_count + 1):(shared_count + early_count + late_count)]
+stable_feats <- shuffled_features[(shared_count + early_count + late_count + 1):n_features]
+
+# Create the full grid
 df <- expand.grid(
   Subject_ID = sprintf("S%02d", 1:n_subjects),
   Timepoint = 1:n_timepoints,
-  Feature = features
+  Feature = feature_list,
+  stringsAsFactors = FALSE
 )
 
-# Generate values based on dynamics
+# Apply dynamic logic based on category
+message("Generating dynamics for 2,000 features...")
 df <- df %>%
   mutate(
     Value = case_when(
-      # Feature_A: Shifting from low to high at T5 (mostly)
-      Feature == "Feature_A" ~ ifelse(Timepoint < 5, 
-                                      runif(n(), 0.1, 0.3), 
-                                      runif(n(), 0.7, 0.9)),
+      Feature %in% shared_feats ~ ifelse(Timepoint < 5, runif(n(), 0.1, 0.2), 
+                                  ifelse(Timepoint < 8, runif(n(), 0.7, 0.9), runif(n(), 0.1, 0.3))),
       
-      # Feature_B: Stable state
-      Feature == "Feature_B" ~ runif(n(), 0.45, 0.55),
+      Feature %in% early_feats  ~ ifelse(Timepoint < 5, runif(n(), 0.1, 0.2), runif(n(), 0.7, 0.9)),
       
-      # Feature_C: Random noise
-      Feature == "Feature_C" ~ runif(n(), 0.0, 1.0)
+      Feature %in% late_feats   ~ ifelse(Timepoint < 8, runif(n(), 0.1, 0.3), runif(n(), 0.7, 0.9)),
+      
+      TRUE ~ ifelse(runif(n()) > 0.5, runif(n(), 0.4, 0.6), runif(n(), 0.0, 1.0)) # Stable/Noise
     )
   )
 
-# Add Edge Cases
-# 1. Subject S08 is stable for Feature_A (no transition)
-df$Value[df$Subject_ID == "S08" & df$Feature == "Feature_A"] <- runif(sum(df$Subject_ID == "S08" & df$Feature == "Feature_A"), 0.1, 0.3)
-
-# 2. Add Missing Values (NAs)
-# S05 is missing some T3 and T7
-df$Value[df$Subject_ID == "S05" & df$Timepoint %in% c(3, 7)] <- NA
-
-# 3. Add some random drops for robustness testing
-drop_indices <- sample(1:nrow(df), 10)
-df$Value[drop_indices] <- NA
+# Add Missing Values for robustness (approx 2%)
+message("Adding random missingness...")
+df$Value[sample(1:nrow(df), floor(nrow(df) * 0.02))] <- NA
 
 # Save to CSV
 dir.create("data", showWarnings = FALSE)
 write.csv(df, "data/mock_longitudinal_transitions.csv", row.names = FALSE)
 
-message("Mock longitudinal data generated: data/mock_longitudinal_transitions.csv")
-message("Schema: ", paste(colnames(df), collapse = ", "))
-message("Scale: ", n_subjects, " subjects, ", n_timepoints, " timepoints, ", length(features), " features.")
+message("Success! R-generated mock data saved to: data/mock_longitudinal_transitions.csv")
+message("Scale: ", n_subjects, " subjects, ", n_timepoints, " timepoints, ", n_features, " features.")
