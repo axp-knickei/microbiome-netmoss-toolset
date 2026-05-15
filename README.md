@@ -115,3 +115,13 @@ If these files are generated without errors, your `NetMoss2` environment is full
 *   **`real_netmoss_assignments.csv`:** Contains the mapping of each microbial feature to a distinct module using the actual NetMoss2 algorithm. Features designated as `Moss_*` form the functional core consistent across all your cohorts, while `Net_*` represents cohort-specific network structures (e.g., disease-state rewiring).
 *   **`circlize_moss_cohort1.pdf`:** A circular representation showing edge connectivity. High-density ribbon connections validate the topological strength of the Moss modules.
 *   **`heatmap_net_shift.pdf`:** Visualizes the "on/off" switch effect of Net modules. Red indicates strong correlation (edges present) in one condition, contrasting with blue (edges absent) in another, confirming significant module rewiring due to biological conditions or batch effects.
+
+## 📚 Citation & References
+
+This toolset integrates and builds upon the **NetMoss** algorithm. If you use this pipeline in your research, please cite the original NetMoss paper:
+
+> Xiao, L., Zhang, F. & Zhao, F. Large-scale microbiome data integration enables robust biomarker identification. *Nat Comput Sci* **2,** 307–316 (2022). https://doi.org/10.1038/s43588-022-00247-8
+
+**Software Credits:**
+- **NetMoss2 R Package:** [xiaolw95/NetMoss2](https://github.com/xiaolw95/NetMoss2)
+- **This Toolset:** Developed by Alex Prima (2026).
