@@ -4,6 +4,8 @@ This repository contains an automated R pipeline to identify context-specific ("
 
 **New to NetMoss?** Check out our [Beginner's Guide to NetMoss Concepts](docs/CONCEPTS.md) to understand the "What", "Why", and "How" of this project.
 
+**Confused by the scripts?** Read our simple, non-technical guide: [How the Pipeline Works (A Simple Guide)](docs/WORKFLOW_EXPLAINED.md).
+
 ## 📊 Data Requirements
 
 Before running the analysis on your own data, please review the **[NetMoss Data Input Guide](docs/DATA_INPUT_GUIDE.md)**. 
