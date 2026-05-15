@@ -3,10 +3,10 @@
 #   make all       - Run the entire pipeline
 #   make clean     - Remove all generated data and results
 
-.PHONY: all data analysis visualize clean
+.PHONY: all data analysis visualize transition clean
 
-# Default target
-all: visualize
+# Default target (Updated to include the new transition plots)
+all: transition
 
 # Step 1: Generate Mock Data
 data: scripts/01_generate_mock_data.R
@@ -22,6 +22,11 @@ analysis: data scripts/02_netmoss_analysis.R
 visualize: analysis scripts/03_visualization_publication.R
 	@echo "Running Step 3: Visualization..."
 	Rscript scripts/03_visualization_publication.R
+
+# Step 4: Generate Transition Dynamics Plots (Figures C, D, E)
+transition: visualize scripts/04_transition_dynamics_plot.R
+	@echo "Running Step 4: Transition Dynamics Plots..."
+	Rscript scripts/04_transition_dynamics_plot.R --input results/modules/merged_temporal_netmoss.csv --output results/figures/
 
 # Clean up generated files
 clean:

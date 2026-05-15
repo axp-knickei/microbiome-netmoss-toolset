@@ -22,6 +22,26 @@ Rscript scripts/01b_abundance_to_network.R \
   --method spearman
 ```
 
+## 🕒 Temporal & Transition Analysis
+
+If you have longitudinal data (multiple timepoints per subject), you can identify "Driver" microbes that shift their importance over time.
+
+### Automated Temporal Workflow:
+Run the wrapper to go from raw longitudinal data to transition plots:
+```bash
+# 1. Generate longitudinal mock data
+python3 scripts/05_generate_longitudinal_mock.py
+
+# 2. Run the temporal wrapper (Infers networks -> Calculates NMSS -> Plots)
+Rscript scripts/06_temporal_workflow_wrapper.R
+```
+
+### Visualizing Dynamics:
+The final output (`transition_T2_T5_T8.pdf`) categorizes taxa into:
+- **Shared Drivers:** Consistently important across all transitions.
+- **Early Drivers:** Important initially, then lose influence.
+- **Late Drivers:** Gain importance in later timepoints.
+
 ## 🚀 Quickstart
 
 **1. Install Dependencies**

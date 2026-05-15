@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.0] - 2026-05-15
+
+### Added
+- **Longitudinal Data Generation:** Added `scripts/05_generate_longitudinal_mock.py` (and `.R`) to create test datasets with time-series dynamics, stable states, and missing values.
+- **Temporal Workflow Wrapper:** Introduced `scripts/06_temporal_workflow_wrapper.R` to automate the transition from longitudinal tables to consecutive shift plots. It handles timepoint-specific network inference and NMSS calculation.
+- **Transition Dynamics Plotting:** Integrated `scripts/04_transition_dynamics_plot.R` into the automated workflow for visualizing "Early", "Late", and "Shared" microbial drivers.
+
 ## [1.2.0] - 2026-05-15
 
 ### Added
